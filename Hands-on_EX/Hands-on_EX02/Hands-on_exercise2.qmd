@@ -5,7 +5,7 @@ author: "FANG YU"
 
 # Getting Started
 
-### **Installing and loading the required libraries**
+### Installing and loading the required libraries
 
 ```{r}
 pacman::p_load(ggrepel, patchwork, 
@@ -13,13 +13,13 @@ pacman::p_load(ggrepel, patchwork,
                tidyverse) 
 ```
 
-### **Importing data**
+### Importing data
 
 ```{r}
 exam_data <- read_csv("data/Exam_data.csv")
 ```
 
-### **Beyond ggplot2 Annotation: ggrepel**
+### Beyond ggplot2 Annotation: ggrepel
 
 ```{r}
 ggplot(data=exam_data, 
@@ -36,7 +36,7 @@ ggplot(data=exam_data,
   ggtitle("English scores versus Maths scores for Primary 3")
 ```
 
-### **Working with ggrepel**
+### Working with ggrepel
 
 ```{r}
 ggplot(data=exam_data, 
@@ -52,7 +52,7 @@ ggplot(data=exam_data,
   ggtitle("English scores versus Maths scores for Primary 3")
 ```
 
-Beyond ggplot2 Themes
+### Beyond ggplot2 Themes
 
 ```{r}
 ggplot(data=exam_data, 
@@ -65,7 +65,8 @@ ggplot(data=exam_data,
   ggtitle("Distribution of Maths scores") 
 ```
 
-Working with ggtheme package
+### Working with ggtheme package
+
 ```{r}
 ggplot(data=exam_data, 
              aes(x = MATHS)) +
@@ -77,7 +78,7 @@ ggplot(data=exam_data,
   theme_economist()
 ```
 
-Working with hrbthems package
+### Working with hrbthems package
 
 ```{r}
 ggplot(data=exam_data, 
@@ -102,7 +103,9 @@ ggplot(data=exam_data,
               base_size = 15,
               grid = "Y")
 ```
-Beyond Single Graph
+
+### Beyond Single Graph
+
 ```{r}
 p1 <- ggplot(data=exam_data, 
              aes(x = MATHS)) +
@@ -136,22 +139,30 @@ p3 <- ggplot(data=exam_data,
                   ylim=c(0,100)) +
   ggtitle("English scores versus Maths scores for Primary 3")
 ```
-Creating Composite Graphics: pathwork methods
-Combining two ggplot2 graphs
+
+### **Creating Composite Graphics: pathwork methods**
+
+### Combining two ggplot2 graphs
+
 ```{r}
 p1 + p2
 ```
 
-Combining three ggplot2 graphs
+### Combining three ggplot2 graphs
+
 ```{r}
 (p1 / p2) | p3
 ```
-Creating a composite figure with tag
+
+### Creating a composite figure with tag
+
 ```{r}
 ((p1 / p2) | p3) + 
   plot_annotation(tag_levels = 'I')
 ```
-Creating figure with insert
+
+### Creating figure with insert
+
 ```{r}
 p3 + inset_element(p2, 
                    left = 0.02, 
@@ -159,7 +170,9 @@ p3 + inset_element(p2,
                    right = 0.5, 
                    top = 1)
 ```
-Creating a composite figure by using patchwork and ggtheme
+
+### Creating a composite figure by using patchwork and ggtheme
+
 ```{r}
 patchwork <- (p1 / p2) | p3
 patchwork & theme_economist()

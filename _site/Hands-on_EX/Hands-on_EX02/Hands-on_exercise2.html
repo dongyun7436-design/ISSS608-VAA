@@ -169,10 +169,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started</a>
   <ul class="collapse">
-  <li><a href="#installing-and-loading-the-required-libraries" id="toc-installing-and-loading-the-required-libraries" class="nav-link" data-scroll-target="#installing-and-loading-the-required-libraries"><strong>Installing and loading the required libraries</strong></a></li>
-  <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data"><strong>Importing data</strong></a></li>
-  <li><a href="#beyond-ggplot2-annotation-ggrepel" id="toc-beyond-ggplot2-annotation-ggrepel" class="nav-link" data-scroll-target="#beyond-ggplot2-annotation-ggrepel"><strong>Beyond ggplot2 Annotation: ggrepel</strong></a></li>
-  <li><a href="#working-with-ggrepel" id="toc-working-with-ggrepel" class="nav-link" data-scroll-target="#working-with-ggrepel"><strong>Working with ggrepel</strong></a></li>
+  <li><a href="#installing-and-loading-the-required-libraries" id="toc-installing-and-loading-the-required-libraries" class="nav-link" data-scroll-target="#installing-and-loading-the-required-libraries">Installing and loading the required libraries</a></li>
+  <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing data</a></li>
+  <li><a href="#beyond-ggplot2-annotation-ggrepel" id="toc-beyond-ggplot2-annotation-ggrepel" class="nav-link" data-scroll-target="#beyond-ggplot2-annotation-ggrepel">Beyond ggplot2 Annotation: ggrepel</a></li>
+  <li><a href="#working-with-ggrepel" id="toc-working-with-ggrepel" class="nav-link" data-scroll-target="#working-with-ggrepel">Working with ggrepel</a></li>
+  <li><a href="#beyond-ggplot2-themes" id="toc-beyond-ggplot2-themes" class="nav-link" data-scroll-target="#beyond-ggplot2-themes">Beyond ggplot2 Themes</a></li>
+  <li><a href="#working-with-ggtheme-package" id="toc-working-with-ggtheme-package" class="nav-link" data-scroll-target="#working-with-ggtheme-package">Working with ggtheme package</a></li>
+  <li><a href="#working-with-hrbthems-package" id="toc-working-with-hrbthems-package" class="nav-link" data-scroll-target="#working-with-hrbthems-package">Working with hrbthems package</a></li>
+  <li><a href="#beyond-single-graph" id="toc-beyond-single-graph" class="nav-link" data-scroll-target="#beyond-single-graph">Beyond Single Graph</a></li>
+  <li><a href="#creating-composite-graphics-pathwork-methods" id="toc-creating-composite-graphics-pathwork-methods" class="nav-link" data-scroll-target="#creating-composite-graphics-pathwork-methods"><strong>Creating Composite Graphics: pathwork methods</strong></a></li>
+  <li><a href="#combining-two-ggplot2-graphs" id="toc-combining-two-ggplot2-graphs" class="nav-link" data-scroll-target="#combining-two-ggplot2-graphs">Combining two ggplot2 graphs</a></li>
+  <li><a href="#combining-three-ggplot2-graphs" id="toc-combining-three-ggplot2-graphs" class="nav-link" data-scroll-target="#combining-three-ggplot2-graphs">Combining three ggplot2 graphs</a></li>
+  <li><a href="#creating-a-composite-figure-with-tag" id="toc-creating-a-composite-figure-with-tag" class="nav-link" data-scroll-target="#creating-a-composite-figure-with-tag">Creating a composite figure with tag</a></li>
+  <li><a href="#creating-figure-with-insert" id="toc-creating-figure-with-insert" class="nav-link" data-scroll-target="#creating-figure-with-insert">Creating figure with insert</a></li>
+  <li><a href="#creating-a-composite-figure-by-using-patchwork-and-ggtheme" id="toc-creating-a-composite-figure-by-using-patchwork-and-ggtheme" class="nav-link" data-scroll-target="#creating-a-composite-figure-by-using-patchwork-and-ggtheme">Creating a composite figure by using patchwork and ggtheme</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -208,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="getting-started" class="level1">
 <h1>Getting Started</h1>
 <section id="installing-and-loading-the-required-libraries" class="level3">
-<h3 class="anchored" data-anchor-id="installing-and-loading-the-required-libraries"><strong>Installing and loading the required libraries</strong></h3>
+<h3 class="anchored" data-anchor-id="installing-and-loading-the-required-libraries">Installing and loading the required libraries</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ggrepel, patchwork, </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               ggthemes, hrbrthemes,</span>
@@ -216,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="importing-data" class="level3">
-<h3 class="anchored" data-anchor-id="importing-data"><strong>Importing data</strong></h3>
+<h3 class="anchored" data-anchor-id="importing-data">Importing data</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Exam_data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
@@ -232,7 +242,7 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </section>
 <section id="beyond-ggplot2-annotation-ggrepel" class="level3">
-<h3 class="anchored" data-anchor-id="beyond-ggplot2-annotation-ggrepel"><strong>Beyond ggplot2 Annotation: ggrepel</strong></h3>
+<h3 class="anchored" data-anchor-id="beyond-ggplot2-annotation-ggrepel">Beyond ggplot2 Annotation: ggrepel</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span> MATHS, </span>
@@ -263,7 +273,7 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </section>
 <section id="working-with-ggrepel" class="level3">
-<h3 class="anchored" data-anchor-id="working-with-ggrepel"><strong>Working with ggrepel</strong></h3>
+<h3 class="anchored" data-anchor-id="working-with-ggrepel">Working with ggrepel</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span> MATHS, </span>
@@ -291,7 +301,9 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </div>
-<p>Beyond ggplot2 Themes</p>
+</section>
+<section id="beyond-ggplot2-themes" class="level3">
+<h3 class="anchored" data-anchor-id="beyond-ggplot2-themes">Beyond ggplot2 Themes</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> MATHS)) <span class="sc">+</span></span>
@@ -309,7 +321,9 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </div>
-<p>Working with ggtheme package</p>
+</section>
+<section id="working-with-ggtheme-package" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-ggtheme-package">Working with ggtheme package</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> MATHS)) <span class="sc">+</span></span>
@@ -327,7 +341,9 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </div>
-<p>Working with hrbthems package</p>
+</section>
+<section id="working-with-hrbthems-package" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-hrbthems-package">Working with hrbthems package</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> MATHS)) <span class="sc">+</span></span>
@@ -412,7 +428,9 @@ font family not found in Windows font database</code></pre>
 </div>
 </div>
 </div>
-<p>Beyond Single Graph</p>
+</section>
+<section id="beyond-single-graph" class="level3">
+<h3 class="anchored" data-anchor-id="beyond-single-graph">Beyond Single Graph</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> MATHS)) <span class="sc">+</span></span>
@@ -444,7 +462,12 @@ font family not found in Windows font database</code></pre>
 <span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>)) <span class="sc">+</span></span>
 <span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"English scores versus Maths scores for Primary 3"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Creating Composite Graphics: pathwork methods Combining two ggplot2 graphs</p>
+</section>
+<section id="creating-composite-graphics-pathwork-methods" class="level3">
+<h3 class="anchored" data-anchor-id="creating-composite-graphics-pathwork-methods"><strong>Creating Composite Graphics: pathwork methods</strong></h3>
+</section>
+<section id="combining-two-ggplot2-graphs" class="level3">
+<h3 class="anchored" data-anchor-id="combining-two-ggplot2-graphs">Combining two ggplot2 graphs</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -455,7 +478,9 @@ font family not found in Windows font database</code></pre>
 </div>
 </div>
 </div>
-<p>Combining three ggplot2 graphs</p>
+</section>
+<section id="combining-three-ggplot2-graphs" class="level3">
+<h3 class="anchored" data-anchor-id="combining-three-ggplot2-graphs">Combining three ggplot2 graphs</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>(p1 <span class="sc">/</span> p2) <span class="sc">|</span> p3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
@@ -469,7 +494,9 @@ font family not found in Windows font database</code></pre>
 </div>
 </div>
 </div>
-<p>Creating a composite figure with tag</p>
+</section>
+<section id="creating-a-composite-figure-with-tag" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-composite-figure-with-tag">Creating a composite figure with tag</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>((p1 <span class="sc">/</span> p2) <span class="sc">|</span> p3) <span class="sc">+</span> </span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">'I'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -484,7 +511,9 @@ font family not found in Windows font database</code></pre>
 </div>
 </div>
 </div>
-<p>Creating figure with insert</p>
+</section>
+<section id="creating-figure-with-insert" class="level3">
+<h3 class="anchored" data-anchor-id="creating-figure-with-insert">Creating figure with insert</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="sc">+</span> <span class="fu">inset_element</span>(p2, </span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">left =</span> <span class="fl">0.02</span>, </span>
@@ -502,7 +531,9 @@ font family not found in Windows font database</code></pre>
 </div>
 </div>
 </div>
-<p>Creating a composite figure by using patchwork and ggtheme</p>
+</section>
+<section id="creating-a-composite-figure-by-using-patchwork-and-ggtheme" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-composite-figure-by-using-patchwork-and-ggtheme">Creating a composite figure by using patchwork and ggtheme</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>patchwork <span class="ot">&lt;-</span> (p1 <span class="sc">/</span> p2) <span class="sc">|</span> p3</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>patchwork <span class="sc">&amp;</span> <span class="fu">theme_economist</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
