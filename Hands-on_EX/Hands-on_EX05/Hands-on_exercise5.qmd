@@ -759,7 +759,7 @@ ggplot(data=realis2018_selected,
 
 ### **Installing *d3treeR* package**
 ```{r}
-install.packages("devtools")
+install.packages("devtools",repos="https://cloud.r-project.org/")
 ```
 
 ```{r}
