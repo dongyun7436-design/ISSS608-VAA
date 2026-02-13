@@ -1,0 +1,40 @@
+---
+title: "Take-home Exercise1"
+author: "FANG YU"
+---
+
+# Take-home Exercise1: Analysis of Factors Influencing the GPA of Students at the University of Education – Vietnam National University
+
+# 1 Overview
+
+## 1.1 Background
+
+## 1.2 Six sub questions
+
+# 2 reading the data
+
+## 2.1 The data
+
+## 2.2 data wrangling(关系图)
+
+## 2.3 data processing
+
+# 3 Data visualization
+
+## 3.1 学生特征分析
+
+### 3.1.1 性别比例
+
+### 3.1.2 贫困生与少数民族表现
+
+## 3.2 家庭背景是否影响学业表现
+
+## 3.3 学习时间、社交时间、社交媒体时间如何共同影响 GPA？
+
+## 3.4 学生对大学支持系统的综合评价
+
+## 3.5进一步分析不同年级适应性和对学校设施满意度变化及GPA影响
+
+## 3.6 竞争氛围对不同学习水平（GPA)的人的影响差异
+
+# 4 Summary and Conclusion

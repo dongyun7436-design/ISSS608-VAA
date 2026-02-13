@@ -355,5 +355,82 @@
     "title": "Hands-on Exercise 5",
     "section": "Designing Interactive Treemap using d3treeR",
     "text": "Designing Interactive Treemap using d3treeR\n\nInstalling d3treeR package\n\ninstall.packages(\"devtools\",repos=\"https://cloud.r-project.org/\")\n\npackage 'devtools' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n    C:\\Users\\dongy\\AppData\\Local\\Temp\\RtmpSEsvz6\\downloaded_packages\n\n\n\nlibrary(devtools)\n\nLoading required package: usethis\n\ninstall_github(\"timelyportfolio/d3treeR\")\n\nUsing GitHub PAT from the git credential store.\n\n\nSkipping install of 'd3treeR' from a github remote, the SHA1 (ebb833db) has not changed since last install.\n  Use `force = TRUE` to force installation\n\n\n\nlibrary(d3treeR)\n\n\n\nDesigning An Interactive Treemap\n\ntm &lt;- treemap(realis2018_summarised,\n        index=c(\"Planning Region\", \"Planning Area\"),\n        vSize=\"Total Unit Sold\",\n        vColor=\"Median Unit Price ($ psm)\",\n        type=\"value\",\n        title=\"Private Residential Property Sold, 2017\",\n        title.legend = \"Median Unit Price (S$ per sq. m)\"\n        )\n\n\n\n\n\n\n\n\n\nd3tree(tm,rootname = \"Singapore\" )"
+  },
+  {
+    "objectID": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#background",
+    "href": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#background",
+    "title": "Take-home Exercise1",
+    "section": "1.1 Background",
+    "text": "1.1 Background"
+  },
+  {
+    "objectID": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#six-sub-questions",
+    "href": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#six-sub-questions",
+    "title": "Take-home Exercise1",
+    "section": "1.2 Six sub questions",
+    "text": "1.2 Six sub questions"
+  },
+  {
+    "objectID": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#the-data",
+    "href": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#the-data",
+    "title": "Take-home Exercise1",
+    "section": "2.1 The data",
+    "text": "2.1 The data"
+  },
+  {
+    "objectID": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#data-wrangling关系图",
+    "href": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#data-wrangling关系图",
+    "title": "Take-home Exercise1",
+    "section": "2.2 data wrangling(关系图)",
+    "text": "2.2 data wrangling(关系图)"
+  },
+  {
+    "objectID": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#data-processing",
+    "href": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#data-processing",
+    "title": "Take-home Exercise1",
+    "section": "2.3 data processing",
+    "text": "2.3 data processing"
+  },
+  {
+    "objectID": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#学生特征分析",
+    "href": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#学生特征分析",
+    "title": "Take-home Exercise1",
+    "section": "3.1 学生特征分析",
+    "text": "3.1 学生特征分析\n\n3.1.1 性别比例\n\n\n3.1.2 贫困生与少数民族表现"
+  },
+  {
+    "objectID": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#家庭背景是否影响学业表现",
+    "href": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#家庭背景是否影响学业表现",
+    "title": "Take-home Exercise1",
+    "section": "3.2 家庭背景是否影响学业表现",
+    "text": "3.2 家庭背景是否影响学业表现"
+  },
+  {
+    "objectID": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#学习时间社交时间社交媒体时间如何共同影响-gpa",
+    "href": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#学习时间社交时间社交媒体时间如何共同影响-gpa",
+    "title": "Take-home Exercise1",
+    "section": "3.3 学习时间、社交时间、社交媒体时间如何共同影响 GPA？",
+    "text": "3.3 学习时间、社交时间、社交媒体时间如何共同影响 GPA？"
+  },
+  {
+    "objectID": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#学生对大学支持系统的综合评价",
+    "href": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#学生对大学支持系统的综合评价",
+    "title": "Take-home Exercise1",
+    "section": "3.4 学生对大学支持系统的综合评价",
+    "text": "3.4 学生对大学支持系统的综合评价"
+  },
+  {
+    "objectID": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#进一步分析不同年级适应性和对学校设施满意度变化及gpa影响",
+    "href": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#进一步分析不同年级适应性和对学校设施满意度变化及gpa影响",
+    "title": "Take-home Exercise1",
+    "section": "3.5进一步分析不同年级适应性和对学校设施满意度变化及GPA影响",
+    "text": "3.5进一步分析不同年级适应性和对学校设施满意度变化及GPA影响"
+  },
+  {
+    "objectID": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#竞争氛围对不同学习水平gpa的人的影响差异",
+    "href": "Take-home_EX/Take-home_EX01/Take-home_exercise1.html#竞争氛围对不同学习水平gpa的人的影响差异",
+    "title": "Take-home Exercise1",
+    "section": "3.6 竞争氛围对不同学习水平（GPA)的人的影响差异",
+    "text": "3.6 竞争氛围对不同学习水平（GPA)的人的影响差异"
   }
 ]
