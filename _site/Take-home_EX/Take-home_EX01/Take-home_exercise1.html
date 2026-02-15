@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -164,23 +199,31 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#reading-the-data" id="toc-reading-the-data" class="nav-link" data-scroll-target="#reading-the-data">2 reading the data</a>
   <ul class="collapse">
   <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">2.1 The data</a></li>
-  <li><a href="#data-wrangling关系图" id="toc-data-wrangling关系图" class="nav-link" data-scroll-target="#data-wrangling关系图">2.2 data wrangling(关系图)</a></li>
-  <li><a href="#data-processing" id="toc-data-processing" class="nav-link" data-scroll-target="#data-processing">2.3 data processing</a></li>
+  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling">2.2 data wrangling</a></li>
+  <li><a href="#data-processing" id="toc-data-processing" class="nav-link" data-scroll-target="#data-processing">2.3 data processing</a>
+  <ul class="collapse">
+  <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">2.3.1 Importing data</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">3 Data visualization</a>
   <ul class="collapse">
-  <li><a href="#学生特征分析" id="toc-学生特征分析" class="nav-link" data-scroll-target="#学生特征分析">3.1 学生特征分析</a>
+  <li><a href="#analysis-of-student-demographic-characteristics" id="toc-analysis-of-student-demographic-characteristics" class="nav-link" data-scroll-target="#analysis-of-student-demographic-characteristics">3.1 Analysis of Student Demographic Characteristics</a>
   <ul class="collapse">
-  <li><a href="#性别比例" id="toc-性别比例" class="nav-link" data-scroll-target="#性别比例">3.1.1 性别比例</a></li>
-  <li><a href="#贫困生与少数民族表现" id="toc-贫困生与少数民族表现" class="nav-link" data-scroll-target="#贫困生与少数民族表现">3.1.2 贫困生与少数民族表现</a></li>
+  <li><a href="#gender-distribution" id="toc-gender-distribution" class="nav-link" data-scroll-target="#gender-distribution">3.1.1 Gender distribution</a></li>
+  <li><a href="#academic-performance-of-policy-supported-students-and-ethnic-minority-students." id="toc-academic-performance-of-policy-supported-students-and-ethnic-minority-students." class="nav-link" data-scroll-target="#academic-performance-of-policy-supported-students-and-ethnic-minority-students.">3.1.2 academic performance of policy supported students and ethnic minority students.</a></li>
   </ul></li>
-  <li><a href="#家庭背景是否影响学业表现" id="toc-家庭背景是否影响学业表现" class="nav-link" data-scroll-target="#家庭背景是否影响学业表现">3.2 家庭背景是否影响学业表现</a></li>
-  <li><a href="#学习时间社交时间社交媒体时间如何共同影响-gpa" id="toc-学习时间社交时间社交媒体时间如何共同影响-gpa" class="nav-link" data-scroll-target="#学习时间社交时间社交媒体时间如何共同影响-gpa">3.3 学习时间、社交时间、社交媒体时间如何共同影响 GPA？</a></li>
-  <li><a href="#学生对大学支持系统的综合评价" id="toc-学生对大学支持系统的综合评价" class="nav-link" data-scroll-target="#学生对大学支持系统的综合评价">3.4 学生对大学支持系统的综合评价</a></li>
-  <li><a href="#进一步分析不同年级适应性和对学校设施满意度变化及gpa影响" id="toc-进一步分析不同年级适应性和对学校设施满意度变化及gpa影响" class="nav-link" data-scroll-target="#进一步分析不同年级适应性和对学校设施满意度变化及gpa影响">3.5进一步分析不同年级适应性和对学校设施满意度变化及GPA影响</a></li>
-  <li><a href="#竞争氛围对不同学习水平gpa的人的影响差异" id="toc-竞争氛围对不同学习水平gpa的人的影响差异" class="nav-link" data-scroll-target="#竞争氛围对不同学习水平gpa的人的影响差异">3.6 竞争氛围对不同学习水平（GPA)的人的影响差异</a></li>
+  <li><a href="#the-influence-of-family-background-on-academic-performance" id="toc-the-influence-of-family-background-on-academic-performance" class="nav-link" data-scroll-target="#the-influence-of-family-background-on-academic-performance">3.2 The influence of family background on academic performance</a>
+  <ul class="collapse">
+  <li><a href="#the-influence-of-parents-education-level-on-their-childrens-gpa" id="toc-the-influence-of-parents-education-level-on-their-childrens-gpa" class="nav-link" data-scroll-target="#the-influence-of-parents-education-level-on-their-childrens-gpa">3.2.1 The influence of parents’ education level on their children’s GPA</a></li>
+  <li><a href="#the-influence-of-parents-occupation-on-their-childrens-gpa" id="toc-the-influence-of-parents-occupation-on-their-childrens-gpa" class="nav-link" data-scroll-target="#the-influence-of-parents-occupation-on-their-childrens-gpa">3.2.2 The influence of parents’ occupation on their children’s GPA</a></li>
+  </ul></li>
+  <li><a href="#the-impact-of-time-allocation-on-gpa-study-time-social-time-social-media-time" id="toc-the-impact-of-time-allocation-on-gpa-study-time-social-time-social-media-time" class="nav-link" data-scroll-target="#the-impact-of-time-allocation-on-gpa-study-time-social-time-social-media-time">3.3 The impact of time allocation on GPA (study time, social time, social media time)</a></li>
+  <li><a href="#comprehensive-evaluation-of-university-support-system-by-students" id="toc-comprehensive-evaluation-of-university-support-system-by-students" class="nav-link" data-scroll-target="#comprehensive-evaluation-of-university-support-system-by-students">3.4 Comprehensive evaluation of university support system by students</a></li>
+  <li><a href="#further-analyze-the-impact-of-students-satisfaction-with-the-school-support-system-on-their-gpa" id="toc-further-analyze-the-impact-of-students-satisfaction-with-the-school-support-system-on-their-gpa" class="nav-link" data-scroll-target="#further-analyze-the-impact-of-students-satisfaction-with-the-school-support-system-on-their-gpa">3.5 Further analyze the impact of students’ satisfaction with the school support system on their GPA</a></li>
+  <li><a href="#the-differential-impact-of-competitive-atmosphere-on-individuals-with-different-levels-of-academic-performance-gpa" id="toc-the-differential-impact-of-competitive-atmosphere-on-individuals-with-different-levels-of-academic-performance-gpa" class="nav-link" data-scroll-target="#the-differential-impact-of-competitive-atmosphere-on-individuals-with-different-levels-of-academic-performance-gpa">3.6 The differential impact of competitive atmosphere on individuals with different levels of academic performance (GPA)</a></li>
   </ul></li>
   <li><a href="#summary-and-conclusion" id="toc-summary-and-conclusion" class="nav-link" data-scroll-target="#summary-and-conclusion">4 Summary and Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">5 References</a></li>
   </ul>
 </nav>
     </div>
@@ -219,52 +262,881 @@ ul.task-list li input[type="checkbox"] {
 <h1>1 Overview</h1>
 <section id="background" class="level2">
 <h2 class="anchored" data-anchor-id="background">1.1 Background</h2>
+<p>This study aims to explore how students’ learning outcomes are influenced by both internal and external factors. These mainly include students’ time allocation for studying, family background, interpersonal relationships, and their satisfaction with the school’s support system (courses, facilities, and teachers).</p>
 </section>
 <section id="six-sub-questions" class="level2">
 <h2 class="anchored" data-anchor-id="six-sub-questions">1.2 Six sub questions</h2>
+<ul>
+<li><p>Analysis of population based on gender, ethnicity, and whether they have received funding, as well as corresponding performance analysis for each population.</p>
+<p>Obejective:To explore whether there are differences in academic performance among different types of students and attempt to provide suggestions for inferring the groups that need attention.</p></li>
+<li><p>Comparing the academic levels of students from different family backgrounds.</p>
+<p>Objective: To explore the impact of parents’ educational level and occupation on their children’s academic performance.</p></li>
+<li><p>Exploring the impact of student time allocation on academic performance.</p>
+<p>Obejective: To explore the impact of students’ social media usage and study time allocation on their academic performance, with a focus on the marginal benefits of study time: whether longer study time necessarily leads to better grades.</p></li>
+<li><p>Visualize students’ comprehensive evaluation of school support systems (facilities, courses, teachers).</p>
+<p>Obejective: To more intuitively demonstrate whether there are deficiencies in the current support provided by the school and to find directions for improvement.</p></li>
+<li><p>Find out if the school support system affects students’ academic performance (based on students’ ratings of various support systems).</p>
+<p>Obejective: To identify support modules that have a greater (and more important) impact on students.</p></li>
+<li><p>Research on the Impact of Competitive Atmosphere on Students.</p>
+<p>Obejective: To verify whether the competitive atmosphere affects academic performance and whether there is a situation where students with excellent grades work harder while those with lower grades are affected.</p></li>
+</ul>
 </section>
 </section>
 <section id="reading-the-data" class="level1">
 <h1>2 reading the data</h1>
 <section id="the-data" class="level2">
 <h2 class="anchored" data-anchor-id="the-data">2.1 The data</h2>
+<p>The dataset was collected from students at the University of Education, Vietnam National University, Hanoi. A total of 2,170 alumni and students completed the questionnaire survey between March and June 2023. The factors affecting GPA are divided into three categories of independent variables. The first category includes objective demographic variables such as gender, ethnicity, parents’ education and occupation. The second category includes school support variables, involving the degree of school support, the degree of curriculum support, school facilities, teaching quality, suitability of training courses, and classroom competitive atmosphere. The third category is personal situations: the allocation of personal learning and entertainment, the degree of adaptation to university life, and the influence of friends on learning.</p>
 </section>
-<section id="data-wrangling关系图" class="level2">
-<h2 class="anchored" data-anchor-id="data-wrangling关系图">2.2 data wrangling(关系图)</h2>
+<section id="data-wrangling" class="level2">
+<h2 class="anchored" data-anchor-id="data-wrangling">2.2 data wrangling</h2>
+<p><img src="image/gpa_influence.png" class="img-fluid"><br>
+</p>
 </section>
 <section id="data-processing" class="level2">
 <h2 class="anchored" data-anchor-id="data-processing">2.3 data processing</h2>
+<section id="importing-data" class="level3">
+<h3 class="anchored" data-anchor-id="importing-data">2.3.1 Importing data</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ggdist, ggridges, ggthemes,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               colorspace, tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/Database paper.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Check for empty values</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(exam_data))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              Year             Gender         Policy_Stu       Minority_Stu 
+                 0                  0                  0                  0 
+          Poor_Stu         Father_Edu         Mother_Edu  Father_Occupation 
+                 0                  0                  0                  0 
+ Mother_Occupation       Time_Friends  Time_SocicalMedia      Time_Studying 
+                 0                  0                  0                  0 
+               GPA Adapt_Learning_Uni      Study_Methods      SupportOf_Uni 
+                 0                  0                  0                  0 
+     SupportOf_Lec      Facilitie_Uni   Quality_Lecturer TrainingCurriculum 
+                 0                  0                  0                  0 
+ Competitive_Class  InfuenceF_Friends 
+                 0                  0 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Re encode the numerical values 1-5 representing options in the data file into descriptive labels</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>( </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">Year =</span> <span class="fu">factor</span>(Year, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"First-year"</span>, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"Second-year"</span>, </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"Third-year"</span>, </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"Fourth-year"</span>, </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"Graduated"</span>)), </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Gender =</span> <span class="fu">factor</span>(Gender, </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Male"</span>,<span class="st">"Female"</span>)),</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">Policy_Stu =</span> <span class="fu">factor</span>(Policy_Stu,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Yes"</span>,<span class="st">"No"</span>)),</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">Minority_Stu =</span> <span class="fu">factor</span>(Minority_Stu,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>                          <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>                          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Yes"</span>,<span class="st">"No"</span>)),</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">Poor_Stu =</span> <span class="fu">factor</span>(Poor_Stu,</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>                      <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Yes"</span>,<span class="st">"No"</span>)),</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">Father_Edu =</span> <span class="fu">factor</span>(Father_Edu,</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>                        <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Primary school"</span>,</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Secondary school"</span>,</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"High school"</span>,</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"College school"</span>,</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"University/Graduate"</span>,</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Other"</span>)),</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mother_Edu =</span> <span class="fu">factor</span>(Mother_Edu,</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>                        <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Primary school"</span>,</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Secondary school"</span>,</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"High school"</span>,</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"College school"</span>,</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"University/Graduate"</span>,</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Other"</span>)),</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">Father_Occupation =</span> <span class="fu">factor</span>(Father_Occupation,</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>                               <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>                               <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Government employee"</span>,</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Self-employment"</span>,</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Freelance"</span>,</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Other"</span>,</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Not public"</span>)),</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mother_Occupation =</span> <span class="fu">factor</span>(Mother_Occupation,</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>                               <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>                               <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Government employee"</span>,</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Self-employment"</span>,</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Freelance"</span>,</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Other"</span>,</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Not public"</span>)),</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">Time_Friends =</span> <span class="fu">factor</span>(Time_Friends,</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>                          <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>                          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Under 1 hour"</span>,</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"1–2 hours"</span>,</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"2–3 hours"</span>,</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"3–4 hours"</span>,</span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"Over 4 hours"</span>)),</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">Time_SocicalMedia =</span> <span class="fu">factor</span>(Time_SocicalMedia,</span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>                               <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>                               <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Under 1 hour"</span>,</span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"1–2 hours"</span>,</span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"2–3 hours"</span>,</span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"3–4 hours"</span>,</span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Over 4 hours"</span>)),</span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>    <span class="at">Time_Studying =</span> <span class="fu">factor</span>(Time_Studying,</span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>                           <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Under 2 hours"</span>,</span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"2–4 hours"</span>,</span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"4–6 hours"</span>,</span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"6–8 hours"</span>,</span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"Over 8 hours"</span>)),</span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>    <span class="at">GPA =</span> <span class="fu">factor</span>(GPA,</span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>                 <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>                 <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Poor (&lt;2.0)"</span>,</span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"Average (2.0–2.5)"</span>,</span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"Fair (2.5–3.2)"</span>,</span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"Good (3.2–3.6)"</span>,</span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"Excellent (&gt;3.6)"</span>)),</span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>    <span class="at">Adapt_Learning_Uni =</span> <span class="fu">factor</span>(Adapt_Learning_Uni, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>),</span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>    <span class="at">Study_Methods =</span> <span class="fu">factor</span>(Study_Methods, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>),</span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>    <span class="at">SupportOf_Uni =</span> <span class="fu">factor</span>(SupportOf_Uni, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>),</span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>    <span class="at">SupportOf_Lec =</span> <span class="fu">factor</span>(SupportOf_Lec, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>),</span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>    <span class="at">Facilitie_Uni =</span> <span class="fu">factor</span>(Facilitie_Uni, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>),</span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>    <span class="at">Quality_Lecturer =</span> <span class="fu">factor</span>(Quality_Lecturer, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>),</span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a>    <span class="at">TrainingCurriculum =</span> <span class="fu">factor</span>(TrainingCurriculum, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>),</span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a>    <span class="at">Competitive_Class =</span> <span class="fu">factor</span>(Competitive_Class, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>),</span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a>    <span class="at">InfuenceF_Friends =</span> <span class="fu">factor</span>(InfuenceF_Friends, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>)    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Check the data processing status and visually display the data</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>exam_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,170 × 22
+   Year      Gender Policy_Stu Minority_Stu Poor_Stu Father_Edu       Mother_Edu
+   &lt;fct&gt;     &lt;fct&gt;  &lt;fct&gt;      &lt;fct&gt;        &lt;fct&gt;    &lt;fct&gt;            &lt;fct&gt;     
+ 1 Graduated Female No         No           No       College school   College s…
+ 2 Graduated Male   No         No           No       High school      High scho…
+ 3 Graduated Female No         No           No       College school   College s…
+ 4 Graduated Female No         No           No       University/Grad… College s…
+ 5 Graduated Male   Yes        No           No       Secondary school High scho…
+ 6 Graduated Female No         No           No       University/Grad… Universit…
+ 7 Graduated Female No         No           No       Other            Universit…
+ 8 Graduated Female No         No           No       University/Grad… College s…
+ 9 Graduated Female No         No           No       University/Grad… Universit…
+10 Graduated Female No         No           No       University/Grad… College s…
+# ℹ 2,160 more rows
+# ℹ 15 more variables: Father_Occupation &lt;fct&gt;, Mother_Occupation &lt;fct&gt;,
+#   Time_Friends &lt;fct&gt;, Time_SocicalMedia &lt;fct&gt;, Time_Studying &lt;fct&gt;,
+#   GPA &lt;fct&gt;, Adapt_Learning_Uni &lt;fct&gt;, Study_Methods &lt;fct&gt;,
+#   SupportOf_Uni &lt;fct&gt;, SupportOf_Lec &lt;fct&gt;, Facilitie_Uni &lt;fct&gt;,
+#   Quality_Lecturer &lt;fct&gt;, TrainingCurriculum &lt;fct&gt;, Competitive_Class &lt;fct&gt;,
+#   InfuenceF_Friends &lt;fct&gt;</code></pre>
+</div>
+</div>
+</section>
 </section>
 </section>
 <section id="data-visualization" class="level1">
 <h1>3 Data visualization</h1>
-<section id="学生特征分析" class="level2">
-<h2 class="anchored" data-anchor-id="学生特征分析">3.1 学生特征分析</h2>
-<section id="性别比例" class="level3">
-<h3 class="anchored" data-anchor-id="性别比例">3.1.1 性别比例</h3>
+<section id="analysis-of-student-demographic-characteristics" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-of-student-demographic-characteristics">3.1 Analysis of Student Demographic Characteristics</h2>
+<section id="gender-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="gender-distribution">3.1.1 Gender distribution</h3>
+<p>Considering the characteristics of the School of Education, we expect the number of female students to far exceed that of male students. This assumption will be tested statistically. We will also examine whether there are differences in academic performance between male and female students, and explore whether the higher proportion of female enrollment is related to their stronger suitability for this major.</p>
+<p>(Table 2) Converting the GPA interval into a fixed value to calculate the average GPA score for male and female students.</p>
+<p>(Table 3) A diverging bar chart is created to visualise the GPA distribution by gender based on within-gender proportions.</p>
+<p>Firstly, the factor()function is used to manually reorder the GPA categories to ensure a meaningful academic progression from “Poor” to “Excellent”. The count() function in the dplyr package is then used to compute the number of students in each GPA category by gender.</p>
+<p>Next, the data are grouped by gender using group_by(), and the proportion within each gender is calculated using mutate(n/sum(n)). This ensures that the percentages for males and females each sum to 100%. To create the mirrored effect, negative values are assigned to male proportions using ifelse(), while female proportions remain positive.</p>
+<p>Finally, the ggplot() and geom_col() functions in the ggplot2 package are used to generate the horizontal bar chart. The coord_flip() function rotates the axes, scale_y_continious() formats percentages without negative signs.</p>
+<p>(Table 4) To compare GPA distributions by gender, I converted categorical GPA ranges into numeric midpoints and generated a density plot. I used semi-transparent fills for visual overlap and added dashed vertical lines to mark the median for each group. This visualization highlights differences in the shape, spread, and central tendency of academic performance between male and female students.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  Gender mean_gpa
+  &lt;fct&gt;     &lt;dbl&gt;
+1 Male       3.18
+2 Female     3.32</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_exercise1_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#table 1</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>gender_dist <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Gender) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">percentage =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste0</span>(Gender, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                   n, <span class="st">" ("</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">percent</span>(percentage, <span class="at">accuracy =</span> <span class="fl">0.1</span>), <span class="st">")"</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gender_dist, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> n, <span class="at">fill =</span> Gender)) <span class="sc">+</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">"y"</span>) <span class="sc">+</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label),</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Gender Distribution"</span>) <span class="sc">+</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Female"</span> <span class="ot">=</span> <span class="st">"#FF9999"</span>, <span class="st">"Male"</span> <span class="ot">=</span> <span class="st">"#89CFF0"</span>)) <span class="sc">+</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">GPA_num =</span> <span class="fu">as.numeric</span>(GPA))</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co">#table 2</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>avg_gpa <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_gpa =</span> <span class="fu">mean</span>(GPA_num, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>avg_gpa</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="co">#table 3</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>gpa_dist <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Gender, GPA) <span class="sc">%&gt;%</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">count =</span> <span class="fu">ifelse</span>(Gender <span class="sc">==</span> <span class="st">"Male"</span>, <span class="sc">-</span>n, n))</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>exam_data<span class="sc">$</span>GPA <span class="ot">&lt;-</span> <span class="fu">factor</span>(exam_data<span class="sc">$</span>GPA,</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>                        <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Poor (&lt;2.0)"</span>,</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Average (2.0–2.5)"</span>,</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Fair (2.5–3.2)"</span>,</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Good (3.2–3.6)"</span>,</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Excellent (&gt;3.6)"</span>))</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>gpa_dist <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Gender, GPA) <span class="sc">%&gt;%</span></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> <span class="fu">ifelse</span>(Gender <span class="sc">==</span> <span class="st">"Male"</span>, <span class="sc">-</span>prop, prop))</span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gpa_dist, <span class="fu">aes</span>(<span class="at">x =</span> GPA, <span class="at">y =</span> prop, <span class="at">fill =</span> Gender)) <span class="sc">+</span></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">percent</span>(<span class="fu">abs</span>(x), <span class="at">accuracy =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Male"</span> <span class="ot">=</span> <span class="st">"#4C78A8"</span>,</span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Female"</span> <span class="ot">=</span> <span class="st">"#E45756"</span>)) <span class="sc">+</span></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"GPA Distribution by Gender (Within-Gender Proportion)"</span>,</span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"GPA Category"</span>,</span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Percentage within Gender"</span>) <span class="sc">+</span></span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a><span class="co">#table 4</span></span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">GPA_num =</span> <span class="fu">case_when</span>(</span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a>      GPA <span class="sc">==</span> <span class="st">"Poor (&lt;2.0)"</span>        <span class="sc">~</span> <span class="fl">1.0</span>,               </span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a>      GPA <span class="sc">==</span> <span class="st">"Average (2.0–2.5)"</span>  <span class="sc">~</span> (<span class="fl">2.0</span> <span class="sc">+</span> <span class="fl">2.5</span>)<span class="sc">/</span><span class="dv">2</span>,     </span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>      GPA <span class="sc">==</span> <span class="st">"Fair (2.5–3.2)"</span>     <span class="sc">~</span> (<span class="fl">2.5</span> <span class="sc">+</span> <span class="fl">3.2</span>)<span class="sc">/</span><span class="dv">2</span>,     </span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a>      GPA <span class="sc">==</span> <span class="st">"Good (3.2–3.6)"</span>     <span class="sc">~</span> (<span class="fl">3.2</span> <span class="sc">+</span> <span class="fl">3.6</span>)<span class="sc">/</span><span class="dv">2</span>,    </span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a>      GPA <span class="sc">==</span> <span class="st">"Excellent (&gt;3.6)"</span>   <span class="sc">~</span> <span class="fl">3.8</span>                 </span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Gender =</span> <span class="fu">fct_relevel</span>(Gender, <span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Gender <span class="sc">==</span> <span class="st">"Female"</span>)</span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Gender <span class="sc">==</span> <span class="st">"Male"</span>)</span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(exam_data, <span class="fu">aes</span>(<span class="at">x =</span> GPA_num, <span class="at">fill =</span> Gender)) <span class="sc">+</span></span>
+<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(f<span class="sc">$</span>GPA_num)), </span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(m<span class="sc">$</span>GPA_num)), </span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Male"</span> <span class="ot">=</span> <span class="st">"#4C78A8"</span>, <span class="st">"Female"</span> <span class="ot">=</span> <span class="st">"#E45756"</span>)) <span class="sc">+</span></span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"GPA Distribution by Gender"</span>,</span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Density of GPA Scores for Male and Female"</span>,</span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"GPA"</span>,</span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density"</span>) <span class="sc">+</span></span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Observation</strong>:</p>
+<p>(Table 1) This chart shows the number and proportion of male and female students participating in the questionnaire. Although the questionnaire does not represent all students and may differ from the actual situation, it to some extent indicates that there are more female students in the Education College.</p>
+<p>(Table 2) The conclusion is that there is not much difference in academic performance between males and females, with slightly higher scores for females. Due to only using the median to replace the GPA interval, there is significant uncertainty. The distribution of each GPA interval is plotted below to further confirm whether females have an advantage in education related studies.</p>
+<p>(Table 3) The chart presents the GPA distribution within each gender group. Female students show a higher proportion in the “Fair (2.5–3.2)” and “Good (3.2–3.6)” categories, indicating stronger concentration in the mid-to-upper GPA ranges. In contrast, male students have relatively higher proportions in the lower GPA categories (“Poor” and “Average”). The proportion of students achieving “Excellent (&gt;3.6)” is small for both genders, with only minor differences observed. The within-gender distribution suggests that female students tend to perform slightly better on average. However, the much smaller male sample size may lead to greater percentage variability, so interpretations should be made cautiously.</p>
+<p>(Table 4) Based on the density plot of GPA distribution by gender,&nbsp;the GPA distributions for males and females largely overlap, indicating that students of both genders perform at comparable academic levels. The main concentration for both groups is around a GPA of approximately 2.8–3.0, suggesting this is the most common performance range.</p>
+<p>However, female students display slightly higher density at the upper GPA range (above 3.2), implying a greater proportion of high-achieving students compared to males. In contrast, male students show marginally higher density at some lower GPA ranges, indicating slightly more variability in performance. The vertical dashed line (representing the average GPA) appears close to the peak of both distributions, reinforcing the similarity in overall academic outcomes.</p>
+<p>In summary, while academic performance in the Education faculty is broadly similar across genders, female students tend to have a modest advantage at higher GPA levels. The higher number of female students in the Education College may be due to the fact that female students are better at studying this major.</p>
 </section>
-<section id="贫困生与少数民族表现" class="level3">
-<h3 class="anchored" data-anchor-id="贫困生与少数民族表现">3.1.2 贫困生与少数民族表现</h3>
+<section id="academic-performance-of-policy-supported-students-and-ethnic-minority-students." class="level3">
+<h3 class="anchored" data-anchor-id="academic-performance-of-policy-supported-students-and-ethnic-minority-students.">3.1.2 academic performance of policy supported students and ethnic minority students.</h3>
+<p>This grouped bar chart visualises the distribution of GPA categories between students who receive support from government (Poor_Stu = “Yes”) and those who do not.</p>
+<p>First, mutate() and as.numeric() are used to convert GPA into a numerical format for calculating mean values. The factor() function is then applied to manually reorder GPA levels from “Poor” to “Excellent” and define the order of the support status, ensuring a logical progression in the visualization.</p>
+<p>Next, the data are processed using dplyr verbs: group_by() and summarise() count the students in each category, while a subsequent mutate() calculates the relative proportion (prop) within each support group. This normalization allows for a fair comparison of performance patterns regardless of the sample size in each group.</p>
+<p>Finally, ggplot() and geom_col(position = “dodge”) are used to generate the chart. panel-tabset.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  Poor_Stu mean_gpa
+  &lt;fct&gt;       &lt;dbl&gt;
+1 Yes          3.15
+2 No           3.31</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_exercise1_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#table 1</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>poor_dist <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Poor_Stu) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">percentage =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste0</span>(Poor_Stu, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                   n, <span class="st">" ("</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">percent</span>(percentage, <span class="at">accuracy =</span> <span class="fl">0.1</span>), <span class="st">")"</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(poor_dist, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> n, <span class="at">fill =</span> Poor_Stu)) <span class="sc">+</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">"y"</span>) <span class="sc">+</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label),</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Supported or not"</span>) <span class="sc">+</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Yes"</span> <span class="ot">=</span> <span class="st">"#4C78A8"</span>, <span class="st">"No"</span> <span class="ot">=</span> <span class="st">"#E45756"</span>)) <span class="sc">+</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">GPA_num =</span> <span class="fu">as.numeric</span>(GPA))</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co">#table 2</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">GPA_num =</span> <span class="fu">as.numeric</span>(GPA))</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>avg_gpa <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Poor_Stu) <span class="sc">%&gt;%</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_gpa =</span> <span class="fu">mean</span>(GPA_num, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>avg_gpa</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="co">#table 3</span></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">GPA =</span> <span class="fu">factor</span>(GPA, <span class="at">levels =</span> <span class="fu">c</span>(</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Poor (&lt;2.0)"</span>,</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Average (2.0–2.5)"</span>,</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Fair (2.5–3.2)"</span>,</span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Good (3.2–3.6)"</span>,</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Excellent (&gt;3.6)"</span></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>    )),</span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">Poor_Stu =</span> <span class="fu">factor</span>(Poor_Stu, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Yes"</span>, <span class="st">"No"</span>))</span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>gpa_prop <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Poor_Stu, GPA) <span class="sc">%&gt;%</span></span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Poor_Stu) <span class="sc">%&gt;%</span></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> count <span class="sc">/</span> <span class="fu">sum</span>(count))</span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gpa_prop, <span class="fu">aes</span>(<span class="at">x =</span> GPA, <span class="at">y =</span> prop, <span class="at">fill =</span> Poor_Stu)) <span class="sc">+</span></span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Yes"</span> <span class="ot">=</span> <span class="st">"#4C78A8"</span>, <span class="st">"No"</span> <span class="ot">=</span> <span class="st">"#E45756"</span>)) <span class="sc">+</span></span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"GPA Distribution by Students Supported or Not"</span>,</span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"GPA Category"</span>,</span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Proportion within Group"</span>,</span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Supported"</span></span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>)</span>
+<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Observation</strong>: Although the average GPA of supported students is lower, from the distribution of grades, they are more concentrated in the average GPA, with fewer high scoring students and no particularly obvious disadvantage. Therefore, the variable of supported students will not be removed in subsequent GPA research.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  Minority_Stu mean_gpa
+  &lt;fct&gt;           &lt;dbl&gt;
+1 Yes              3.22
+2 No               3.31</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_exercise1_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#table 1</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>Minority_dist <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Minority_Stu) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">percentage =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste0</span>(Minority_Stu, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                   n, <span class="st">" ("</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">percent</span>(percentage, <span class="at">accuracy =</span> <span class="fl">0.1</span>), <span class="st">")"</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Minority_dist, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> n, <span class="at">fill =</span> Minority_Stu)) <span class="sc">+</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">"y"</span>) <span class="sc">+</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label),</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Minority or not"</span>) <span class="sc">+</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Yes"</span> <span class="ot">=</span> <span class="st">"#4C78A8"</span>, <span class="st">"No"</span> <span class="ot">=</span> <span class="st">"#E45756"</span>)) <span class="sc">+</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">GPA_num =</span> <span class="fu">as.numeric</span>(GPA))</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="co">#table 2</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">GPA_num =</span> <span class="fu">as.numeric</span>(GPA))</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>avg_gpa <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Minority_Stu) <span class="sc">%&gt;%</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_gpa =</span> <span class="fu">mean</span>(GPA_num, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>avg_gpa</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="co">#table 3</span></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">GPA =</span> <span class="fu">factor</span>(GPA, <span class="at">levels =</span> <span class="fu">c</span>(</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Poor (&lt;2.0)"</span>,</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Average (2.0–2.5)"</span>,</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Fair (2.5–3.2)"</span>,</span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Good (3.2–3.6)"</span>,</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Excellent (&gt;3.6)"</span></span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>    )),</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">Minority_Stu =</span> <span class="fu">factor</span>(Minority_Stu, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Yes"</span>, <span class="st">"No"</span>))</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>gpa_prop <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Minority_Stu, GPA) <span class="sc">%&gt;%</span></span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Minority_Stu) <span class="sc">%&gt;%</span></span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> count <span class="sc">/</span> <span class="fu">sum</span>(count))</span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gpa_prop, <span class="fu">aes</span>(<span class="at">x =</span> GPA, <span class="at">y =</span> prop, <span class="at">fill =</span> Minority_Stu)) <span class="sc">+</span></span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Yes"</span> <span class="ot">=</span> <span class="st">"#4C78A8"</span>, <span class="st">"No"</span> <span class="ot">=</span> <span class="st">"#E45756"</span>)) <span class="sc">+</span></span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"GPA distribution of students from different ethnic groups"</span>,</span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"GPA Category"</span>,</span>
+<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Proportion within Group"</span>,</span>
+<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Minority"</span></span>
+<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>)</span>
+<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Observation</strong>: The average GPA of ethnic minority students is very similar to that of other students, but the vast majority of ethnic minority students are concentrated in intermediate grades, with few high and low GPA students. However, due to the very small number of ethnic minority students, the overall impact is not significant, and all subsequent studies will not exclude ethnic variables.</p>
 </section>
 </section>
-<section id="家庭背景是否影响学业表现" class="level2">
-<h2 class="anchored" data-anchor-id="家庭背景是否影响学业表现">3.2 家庭背景是否影响学业表现</h2>
+<section id="the-influence-of-family-background-on-academic-performance" class="level2">
+<h2 class="anchored" data-anchor-id="the-influence-of-family-background-on-academic-performance">3.2 The influence of family background on academic performance</h2>
+<section id="the-influence-of-parents-education-level-on-their-childrens-gpa" class="level3">
+<h3 class="anchored" data-anchor-id="the-influence-of-parents-education-level-on-their-childrens-gpa">3.2.1 The influence of parents’ education level on their children’s GPA</h3>
+<p>This analysis utilizes a heatmap and an alluvial diagram to examine the relationship between parental education levels and student GPA.</p>
+<p>First, the filter() function is used to exclude “Other” categories, ensuring the analysis focuses on defined educational backgrounds. For the heatmap, group_by() and summarise() aggregate the data to calculate the mean GPA for every combination of maternal and paternal education. For the alluvial diagram, count() identifies the frequency of students across the flow of parental education to final GPA categories.</p>
+<p>Next, ggplot2 and its extension ggalluvial are employed for visualization. The geom_tile() function generates a heatmap to highlight the interaction effect of parental education on average performance. Simultaneously, geom_alluvium() and geom_stratum() create a flow visualization that tracks how student cohorts transition from their socioeconomic background to specific academic outcomes.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_exercise1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_exercise1_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#table 1</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>edu_gpa <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Father_Edu <span class="sc">!=</span> <span class="st">"Other"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Mother_Edu <span class="sc">!=</span> <span class="st">"Other"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Father_Edu, Mother_Edu) <span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_gpa =</span> <span class="fu">mean</span>(GPA_num, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(edu_gpa, <span class="fu">aes</span>(<span class="at">x =</span> Father_Edu, <span class="at">y =</span> Mother_Edu, <span class="at">fill =</span> mean_gpa)) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#f7fbff"</span>, <span class="st">"#6baed6"</span>, <span class="st">"#08306b"</span>)) <span class="sc">+</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average GPA by Parental Education Interaction"</span>,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Father's Education"</span>, <span class="at">y =</span> <span class="st">"Mother's Education"</span>,</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Mean GPA"</span>) <span class="sc">+</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co">#table 2</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggalluvial)</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Father_Edu <span class="sc">!=</span> <span class="st">"Other"</span>, Mother_Edu <span class="sc">!=</span> <span class="st">"Other"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Father_Edu, Mother_Edu, GPA) </span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_data,</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> n, </span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>           <span class="at">axis1 =</span> Father_Edu, </span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>           <span class="at">axis2 =</span> Mother_Edu, </span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">axis3 =</span> GPA)) <span class="sc">+</span> </span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_alluvium</span>(<span class="fu">aes</span>(<span class="at">fill =</span> GPA), <span class="at">width =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">12</span>) <span class="sc">+</span> </span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_stratum</span>(<span class="at">width =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">12</span>, <span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">color =</span> <span class="st">"grey"</span>) <span class="sc">+</span></span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">stat =</span> <span class="st">"stratum"</span>, <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">after_stat</span>(stratum)), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"Father Edu"</span>, <span class="st">"Mother Edu"</span>, <span class="st">"Student GPA"</span>), </span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>                   <span class="at">expand =</span> <span class="fu">c</span>(.<span class="dv">05</span>, .<span class="dv">05</span>)) <span class="sc">+</span></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"RdYlBu"</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Impact of Parental Education on GPA Tiers"</span>,</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Number of Students"</span>,</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"GPA Category"</span>) <span class="sc">+</span></span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Observation</strong>:</p>
+<p>(Table 1) From the heatmap, it can be observed that the educational level of parents and the GPA of their children are basically proportional, and the impact of the mother’s university degree on the child’s grades is most intuitive. In cases where the mother’s education level is extremely high, the father’s education level has almost no effect, and the child’s GPA is generally excellent. This may be due to the fact that in today’s society, family education is generally led by the mother.</p>
+<p>(Table 2) The Parallel Categories Diagram provides a more intuitive display of the impact of parental education on children’s academic performance. It can be seen that the vast majority of outstanding students come from families where their parents have higher education than high schools, and students with good grades also have a higher proportion of parents with higher education levels, fully demonstrating the importance of shogunate education.</p>
 </section>
-<section id="学习时间社交时间社交媒体时间如何共同影响-gpa" class="level2">
-<h2 class="anchored" data-anchor-id="学习时间社交时间社交媒体时间如何共同影响-gpa">3.3 学习时间、社交时间、社交媒体时间如何共同影响 GPA？</h2>
+<section id="the-influence-of-parents-occupation-on-their-childrens-gpa" class="level3">
+<h3 class="anchored" data-anchor-id="the-influence-of-parents-occupation-on-their-childrens-gpa">3.2.2 The influence of parents’ occupation on their children’s GPA</h3>
+<p>This analysis examines the impact of parental occupation on student GPA using a faceted boxplot visualization.</p>
+<p>Initially, the filter() function is applied to remove “Other” occupational categories to maintain research focus. The Father_Occupation and Mother_Occupation variables are treated as nominal factors, while GPA is analyzed in its numeric form (GPA_num) to capture granular variations.</p>
+<p>Using ggplot2, the data is partitioned by father’s occupation via facet_wrap(), allowing for a simultaneous comparison of mother’s occupation across different household contexts. The inclusion of stat_summary() provides a clear indication of mean performance, while the boxplot components reveal the interquartile range and skewness within each occupational subgroup. This visualization effectively identifies which parental career combinations correlate with higher academic achievement.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_exercise1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>occ_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Father_Occupation <span class="sc">!=</span> <span class="st">"Other"</span>, Mother_Occupation <span class="sc">!=</span> <span class="st">"Other"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(occ_data, <span class="fu">aes</span>(<span class="at">x =</span> Mother_Occupation, <span class="at">y =</span> GPA_num, <span class="at">fill =</span> Mother_Occupation)) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">outlier.alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">shape =</span> <span class="dv">23</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Father_Occupation, <span class="at">labeller =</span> label_both) <span class="sc">+</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Pastel1"</span>) <span class="sc">+</span> </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Student GPA Distribution by Parental Occupations"</span>,</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"White diamonds represent the mean GPA"</span>,</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Mother's Occupation"</span>,</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Numeric GPA"</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>, </span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"grey95"</span>), </span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Observation</strong>: The faceted boxplot reveals that students with at least one parent in government employment or self-employment tend to achieve higher and more stable GPAs. This may reflect the family environment or educational resource advantages brought by the professional background. In contrast, families where the father’s occupation is categorized as ‘Not public’ show greater variability and generally lower median performance, suggesting that parental career stability may correlate with academic consistency.</p>
 </section>
-<section id="学生对大学支持系统的综合评价" class="level2">
-<h2 class="anchored" data-anchor-id="学生对大学支持系统的综合评价">3.4 学生对大学支持系统的综合评价</h2>
 </section>
-<section id="进一步分析不同年级适应性和对学校设施满意度变化及gpa影响" class="level2">
-<h2 class="anchored" data-anchor-id="进一步分析不同年级适应性和对学校设施满意度变化及gpa影响">3.5进一步分析不同年级适应性和对学校设施满意度变化及GPA影响</h2>
+<section id="the-impact-of-time-allocation-on-gpa-study-time-social-time-social-media-time" class="level2">
+<h2 class="anchored" data-anchor-id="the-impact-of-time-allocation-on-gpa-study-time-social-time-social-media-time">3.3 The impact of time allocation on GPA (study time, social time, social media time)</h2>
+<p>This section examines the correlation between academic performance and daily time allocation across three dimensions: studying, social interaction, and social media usage.</p>
+<p>Data were reorganized using the pivot_longer() function from the tidyverse to facilitate a comparative analysis. The variables—Time_Friends, Time_SocicalMedia, and Time_Studying—were maintained as ordinal factors to preserve the logical increment of time intervals.</p>
+<p>Two visualization strategies were employed: faceted line charts to identify individual trends and a heat map to explore the interaction between productive (study) and distributive (social media) time. By calculating the mean_gpa for each category, the visualization reveals potential “tipping points” where excessive social or media time begins to negatively correlate with academic outcomes.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_exercise1_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#table 1</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>time_impact <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(GPA_num, Time_Friends, Time_SocicalMedia, Time_Studying) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"Time"</span>), </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"Activity_Type"</span>, </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Time_Spent"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Activity_Type, Time_Spent) <span class="sc">%&gt;%</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_gpa =</span> <span class="fu">mean</span>(GPA_num, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(time_impact, <span class="fu">aes</span>(<span class="at">x =</span> Time_Spent, <span class="at">y =</span> mean_gpa, <span class="at">group =</span> Activity_Type, <span class="at">color =</span> Activity_Type)) <span class="sc">+</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Activity_Type, <span class="at">scales =</span> <span class="st">"free_x"</span>) <span class="sc">+</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Set1"</span>) <span class="sc">+</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Impact of Time Allocation on Average GPA"</span>,</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Hours Spent"</span>,</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Average GPA"</span>,</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Comparing Study, Social, and Social Media Time"</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="co">#table 2</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>interaction_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Time_Studying, Time_SocicalMedia) <span class="sc">%&gt;%</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_gpa =</span> <span class="fu">mean</span>(GPA_num, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(interaction_data, <span class="fu">aes</span>(<span class="at">x =</span> Time_Studying, <span class="at">y =</span> Time_SocicalMedia, <span class="at">fill =</span> mean_gpa)) <span class="sc">+</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"RdYlGn"</span>, <span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Interaction of Study and Social Media Time on GPA"</span>,</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Study Time"</span>,</span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Social Media Time"</span>,</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Mean GPA"</span></span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<p>Observation:</p>
+<p>(Table 1) There is a negative correlation between social and media usage time and GPA. After socializing for more than 2 hours a day, GPA begins to show a significant stepwise decline. However, after playing social media for more than 3 hours a day, GPA shows a more severe cliff like decline. Learning time is positively correlated with GPA, but it is not a simple linear relationship. Students who study for less than 2 hours perform well, but show a clear dip in the 2-4 hour range, which may be due to poor learning efficiency and not spending more time and effort. Subsequently, with the increase of time (more than 4 hours), there is a strong positive correlation growth, reaching the highest score after 8 hours.</p>
+<p>(Table 2) The heatmap further illustrates the game between learning time and play time. Overall, as learning time increases and social media usage time decreases, grades will gradually improve. However, there is a clear red block (GPA&lt;1.5) in the graph, located in the combination of 4-6 hours of study but&lt;1 hour of social media, which may indicate that the time has been spent elsewhere.</p>
 </section>
-<section id="竞争氛围对不同学习水平gpa的人的影响差异" class="level2">
-<h2 class="anchored" data-anchor-id="竞争氛围对不同学习水平gpa的人的影响差异">3.6 竞争氛围对不同学习水平（GPA)的人的影响差异</h2>
+<section id="comprehensive-evaluation-of-university-support-system-by-students" class="level2">
+<h2 class="anchored" data-anchor-id="comprehensive-evaluation-of-university-support-system-by-students">3.4 Comprehensive evaluation of university support system by students</h2>
+<p>A diverging stacked bar chart is created to visualise the distribution of students’ satisfaction ratings across five university support dimensions.</p>
+<p>Firstly, the <code>mutate()</code> function in the dplyr package is used to convert the Likert-scale numeric responses (1–5) into ordered factor variables with meaningful labels. The <code>pivot_longer()</code> function in the tidyr package then transforms the dataset from wide to long format so that all items can be analysed together. The data are grouped by item and response category using <code>group_by()</code>, and the number of responses is calculated using <code>summarise()</code>. The percentage distribution within each item is then computed.</p>
+<p>To create a diverging effect, negative values are assigned to the lower satisfaction levels, while neutral and positive responses remain positive. Finally, the <code>ggplot()</code> and <code>geom_bar()</code> functions in the ggplot2 package are used to generate the horizontal stacked bar chart, with aesthetic adjustments made using <code>coord_flip()</code>, <code>scale_y_continuous()</code>, <code>labs()</code>, and <code>theme()</code>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_exercise1_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>likert_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"SupportOf_Uni"</span>, <span class="st">"SupportOf_Lec"</span>, </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"Facilitie_Uni"</span>, <span class="st">"Quality_Lecturer"</span>, <span class="st">"TrainingCurriculum"</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(likert_cols),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                <span class="sc">~</span> <span class="fu">factor</span>(.,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Not at all"</span>,<span class="st">"Little"</span>,<span class="st">"Moderate"</span>,<span class="st">"Quite"</span>,<span class="st">"Very"</span>))))</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>long_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ID =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">all_of</span>(likert_cols), <span class="at">names_to =</span> <span class="st">"Item"</span>, <span class="at">values_to =</span> <span class="st">"Response"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Item, Response) <span class="sc">%&gt;%</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(Item, <span class="at">Response =</span> <span class="fu">c</span>(<span class="st">"Not at all"</span>,<span class="st">"Little"</span>,<span class="st">"Moderate"</span>,<span class="st">"Quite"</span>,<span class="st">"Very"</span>),</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> <span class="fu">list</span>(<span class="at">n =</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Item) <span class="sc">%&gt;%</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop =</span> <span class="fu">case_when</span>(</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>      Response <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Not at all"</span>,<span class="st">"Little"</span>) <span class="sc">~</span> <span class="sc">-</span>prop,</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> prop</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">Response =</span> <span class="fu">factor</span>(Response, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Not at all"</span>,<span class="st">"Little"</span>,<span class="st">"Moderate"</span>,<span class="st">"Quite"</span>,<span class="st">"Very"</span>))</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(long_data, <span class="fu">aes</span>(<span class="at">x =</span> Item, <span class="at">y =</span> prop, <span class="at">fill =</span> Response)) <span class="sc">+</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(<span class="fu">abs</span>(x), <span class="st">"%"</span>)) <span class="sc">+</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"RdYlBu"</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"University &amp; Lecture Support Survey"</span>,</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Distribution of Satisfaction Ratings"</span>,</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Percentage"</span>) <span class="sc">+</span></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size=</span><span class="dv">14</span>, <span class="at">face=</span><span class="st">"bold"</span>),</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size=</span><span class="dv">12</span>),</span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">11</span>),</span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.title =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Observation</strong>: We can see from this picture that the majority of responses fall into “Very” and “Quite”, which together account for more than half of the ratings. This indicates that students are generally satisfied with the school and teaching support, with the highest proportion of high scores in course quality. This suggests that students are most satisfied with lecturer quality. The performance of course support and university curriculum is also good, but there is a significant difference in the evaluation of school facilities, with fewer high scores supported by the school, which may lead to some unsatisfactory issues.</p>
+</section>
+<section id="further-analyze-the-impact-of-students-satisfaction-with-the-school-support-system-on-their-gpa" class="level2">
+<h2 class="anchored" data-anchor-id="further-analyze-the-impact-of-students-satisfaction-with-the-school-support-system-on-their-gpa">3.5 Further analyze the impact of students’ satisfaction with the school support system on their GPA</h2>
+<p>Creating a ridge plot to examine the relationship between students’ overall satisfaction index and academic performance (GPA).</p>
+<p>Firstly, by using mutate() and across() to convert the five dimensions of the Likert scale back to numerical values, a comprehensive support index is constructed. The rowMeans() function is used to calculate the overall satisfaction score for each student. To ensure comparability between different GPA levels, the index was standardized using the scale() function.</p>
+<p>Next, process the data to align with the sequential GPA categories. The ggplot() function, along with the ggridges and ggdist packages, is used to map support indices to the x-axis and GPA categories to the y-axis. Specifically, geom_density_ridges (or stat_calfeie()) is used to visualize density distribution, allowing for the identification of changes in satisfaction peaks at different performance levels.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_exercise1_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">all_of</span>(likert_cols), as.numeric, <span class="at">.names =</span> <span class="st">"{col}_num"</span>),</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Support_Index =</span> <span class="fu">rowMeans</span>(<span class="fu">select</span>(., <span class="fu">ends_with</span>(<span class="st">"_num"</span>)), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Support_Index_Std =</span> <span class="fu">scale</span>(Support_Index)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(exam_data, <span class="fu">aes</span>(<span class="at">x =</span> Support_Index, <span class="at">y =</span> GPA, <span class="at">fill =</span> GPA)) <span class="sc">+</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">scale =</span> <span class="fl">1.2</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"RdYlBu"</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Ridgeline View of Support Index Across GPA Levels"</span>,</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Distribution shifts across ordinal GPA categories"</span>,</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Support Satisfaction Index (1-5)"</span>,</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"GPA Category"</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Observation</strong>: As the GPA increases from ‘Poor’ to ‘Excellent’, the peak (mode) of the satisfaction index curve shifts significantly to the right. This indicates that students with better academic performance typically have higher evaluations of the school’s support, such as teaching quality and curriculum design. The curve of the “Excellent” group is the steepest and most concentrated, indicating that high scoring students have very consistent evaluations of satisfaction. The curve of the “Poor” group is smoother and shows multiple peaks, indicating that students with poor grades have serious differentiation in their perception of satisfaction.</p>
+</section>
+<section id="the-differential-impact-of-competitive-atmosphere-on-individuals-with-different-levels-of-academic-performance-gpa" class="level2">
+<h2 class="anchored" data-anchor-id="the-differential-impact-of-competitive-atmosphere-on-individuals-with-different-levels-of-academic-performance-gpa">3.6 The differential impact of competitive atmosphere on individuals with different levels of academic performance (GPA)</h2>
+<p>In order to explore the relationship between students’ GPA scores and class competition. I use heat maps to visualize the distribution levels of GPA across different competitive classes. Use geom_tile() to create a heatmap, where the x-axis represents competition level and the y-axis represents GPA category. The fill color corresponds to the proportion of students in each GPA category of the given class type. Gradient shades (from white to steel blue) have been applied, so darker tones represent higher proportions.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_exercise1_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>gpa_table <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Competitive_Class, GPA) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Competitive_Class) <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gpa_table, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(Competitive_Class), <span class="at">y =</span> GPA, <span class="at">fill =</span> prop)) <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Competitive Class Affect"</span>, <span class="at">y =</span> <span class="st">"GPA Category"</span>, <span class="at">fill =</span> <span class="st">"Proportion"</span>) <span class="sc">+</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Observation</strong>: Overall, students with better grades believe that class competition has a stronger impact. Students with a GPA higher than 3.2 in the chart choose more high impact individuals (from shallow to deep in the proportion), while students with a GPA lower than 3.2 generally show a trend from deep to shallow. This may be due to their less prominent ranking, as they do not care as much about competition. Competition does have a motivating effect on learning, but it is only more effective for students with good grades.</p>
 </section>
 </section>
 <section id="summary-and-conclusion" class="level1">
 <h1>4 Summary and Conclusion</h1>
+<p>The goal of this research is to provide a holistic understanding of the drivers behind student GPA variations. By integrating individual demographics, household characteristics, and school-level support indicators, the study aims to provide data-driven insights for university administrators to develop targeted intervention strategies, particularly for students facing socioeconomic challenges or dissatisfaction with campus resources.</p>
+</section>
+<section id="references" class="level1">
+<h1>5 References</h1>
+<ul>
+<li><p>R for Visual Analytics. https://r4va.netlify.app/</p></li>
+<li><p>Introduction to ggridges. https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html</p></li>
+<li><p>Ggalluvial https://corybrunson.github.io/ggalluvial/</p></li>
+</ul>
 
 
 </section>
