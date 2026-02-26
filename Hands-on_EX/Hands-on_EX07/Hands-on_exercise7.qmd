@@ -212,5 +212,5 @@ rice %>%
   newggslopegraph(Year, Yield, Country,
                 Title = "Rice Yield of Top 11 Asian Counties",
                 SubTitle = "1961-1980",
-                Caption = "Prepared by: Dr. Kam Tin Seong")
+                Caption = "Prepared by: FANG YU")
 ```
