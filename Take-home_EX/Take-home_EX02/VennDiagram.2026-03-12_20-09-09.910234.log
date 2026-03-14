@@ -1,0 +1,7 @@
+INFO [2026-03-12 20:09:09] $x
+INFO [2026-03-12 20:09:09] list(Import = top10_import$region, Export = top10_export$region)
+INFO [2026-03-12 20:09:09] 
+INFO [2026-03-12 20:09:09] $filename
+INFO [2026-03-12 20:09:09] NULL
+INFO [2026-03-12 20:09:09] 
+ERROR [2026-03-13 13:38:52] Impossible: cross section area too large.
