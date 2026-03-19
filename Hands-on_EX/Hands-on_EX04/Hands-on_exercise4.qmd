@@ -436,9 +436,6 @@ exam %>%
 
 ### **Installing ungeviz package**
 
-```{r}
-devtools::install_github("wilkelab/ungeviz")
-```
 
 ```{r}
 pacman::p_load(tidyverse, FunnelPlotR, plotly, knitr)

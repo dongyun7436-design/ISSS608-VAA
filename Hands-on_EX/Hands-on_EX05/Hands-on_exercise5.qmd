@@ -758,13 +758,9 @@ ggplot(data=realis2018_selected,
 ## **Designing Interactive Treemap using d3treeR**
 
 ### **Installing *d3treeR* package**
-```{r}
-install.packages("devtools",repos="https://cloud.r-project.org/")
-```
 
 ```{r}
 library(devtools)
-install_github("timelyportfolio/d3treeR")
 ```
 
 ```{r}
