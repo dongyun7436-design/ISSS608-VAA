@@ -12,7 +12,7 @@ library(sf)
 library(rnaturalearth)
 library(countrycode)
 library(ggplot2)
-
+Sys.setlocale("LC_TIME", "English")
 process_wide_data <- function(file_path, type_label) {
   df <- read_excel(file_path)
   
